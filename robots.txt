@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studiolab.ae/sitemap.xml
