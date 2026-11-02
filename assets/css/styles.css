@@ -468,20 +468,32 @@ ol {
   color: #04101f;
 }
 
+/* WhatsApp: always green, always with the icon (main.js adds the icon) */
 .btn--wa {
-  --btn-bg: transparent;
-  --btn-fg: var(--fg);
-  border-color: var(--line-strong);
+  --btn-bg: var(--wa);
+  --btn-fg: #04140a;
+  border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.45), 0 10px 30px -10px rgba(37, 211, 102, 0.65);
 }
 
 .btn--wa::before {
-  background: var(--wa);
+  background: linear-gradient(100deg, #7df7a9, #25d366);
 }
 
 .btn--wa:hover {
   color: #04140a;
   border-color: transparent;
-  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.5), 0 8px 30px -8px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.6), 0 10px 30px -8px rgba(37, 211, 102, 0.6);
+}
+
+.btn--wa .ico {
+  width: 18px;
+  height: 18px;
+}
+
+.btn--sm .ico {
+  width: 16px;
+  height: 16px;
 }
 
 .btn--sm {
@@ -1357,11 +1369,23 @@ html[lang="ru"] .nav__link {
   color: var(--fg-3);
 }
 
+.price-table td:nth-child(3),
+.price-table th:nth-child(3),
 .price-table td:last-child,
 .price-table th:last-child {
   text-align: end;
-  padding-inline-end: 0;
   white-space: nowrap;
+}
+
+.price-table td:last-child,
+.price-table th:last-child {
+  padding-inline-end: 0;
+}
+
+.price-table .btn {
+  min-height: 36px;
+  padding: 0 0.9rem;
+  font-size: 0.82rem;
 }
 
 .price-table .num {

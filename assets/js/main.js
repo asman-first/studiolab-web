@@ -47,6 +47,12 @@
       notConfigured: "The form is temporarily unavailable. Please call +971 4 572 8386.",
       failed: "Something went wrong. Please try again or call +971 4 572 8386.",
       network: "Network error. Please check your connection and try again.",
+      order: "Order",
+      waLabel: "WhatsApp",
+      waAria: (pkg) => `Order on WhatsApp: ${pkg}`,
+      waRow: (service, pkg, price) => `Hi Studiolab, I'm interested in ${service}: ${pkg} — ${price}.`,
+      waVideo: (n, unit, total) => `Hi Studiolab, I'd like to order AI video: ${n} ${n === 1 ? "video" : "videos"} up to 30 s, AED ${num(unit)} each, AED ${num(total)} in total.`,
+      waDubbing: (m, l, tier, rate, total) => `Hi Studiolab, I'd like a quote for video dubbing: ${m} min, ${l} ${l === 1 ? "language" : "languages"}, ${tier} tier (AED ${num(rate)}/min), approx. AED ${num(total)} excl. VAT.`,
     },
     ar: {
       money: (v) => `${num(v)} درهم`,
@@ -64,6 +70,12 @@
       notConfigured: "النموذج غير متاح مؤقتًا. يرجى التواصل عبر واتساب أو الاتصال على +971 4 572 8386.",
       failed: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال على +971 4 572 8386.",
       network: "خطأ في الاتصال. يرجى التحقق من الإنترنت والمحاولة مجددًا.",
+      order: "اطلب",
+      waLabel: "واتساب",
+      waAria: (pkg) => `اطلب عبر واتساب: ${pkg}`,
+      waRow: (service, pkg, price) => `مرحبًا Studiolab، أهتم بـ${service}: ${pkg} — ${price}.`,
+      waVideo: (n, unit, total) => `مرحبًا Studiolab، أود طلب فيديو بالذكاء الاصطناعي: ${arCount(n, "فيديو واحد", "فيديوهان", "فيديوهات", "فيديو")} حتى 30 ثانية، ${num(unit)} درهم لكل فيديو، الإجمالي ${num(total)} درهم.`,
+      waDubbing: (m, l, tier, rate, total) => `مرحبًا Studiolab، أود عرض سعر لدبلجة فيديو: ${arCount(m, "دقيقة واحدة", "دقيقتان", "دقائق", "دقيقة")}، ${arCount(l, "لغة واحدة", "لغتان", "لغات", "لغة")}، باقة ${tier} (${num(rate)} درهم/دقيقة)، نحو ${num(total)} درهم غير شاملة الضريبة.`,
     },
     ru: {
       money: (v) => `${num(v)} AED`,
@@ -81,6 +93,12 @@
       notConfigured: "Форма временно недоступна. Напишите в WhatsApp или позвоните: +971 4 572 8386.",
       failed: "Что-то пошло не так. Попробуйте ещё раз или позвоните: +971 4 572 8386.",
       network: "Ошибка сети. Проверьте подключение и попробуйте снова.",
+      order: "Заказать",
+      waLabel: "WhatsApp",
+      waAria: (pkg) => `Заказать в WhatsApp: ${pkg}`,
+      waRow: (service, pkg, price) => `Здравствуйте, Studiolab! Интересует ${service}: ${pkg} — ${price}.`,
+      waVideo: (n, unit, total) => `Здравствуйте, Studiolab! Хочу заказать ИИ-видео: ${n} видео до 30 с, ${num(unit)} AED за видео, итого ${num(total)} AED.`,
+      waDubbing: (m, l, tier, rate, total) => `Здравствуйте, Studiolab! Хочу узнать цену дубляжа: ${ruCount(m, "минута", "минуты", "минут")}, ${ruCount(l, "язык", "языка", "языков")}, тариф ${tier} (${num(rate)} AED/мин), примерно ${num(total)} AED без НДС.`,
     },
   };
   const T = STRINGS[lang] || STRINGS.en;
@@ -94,9 +112,48 @@
 
   const WHATSAPP_NUMBER = "971553321026";
 
-  document.querySelectorAll("[data-wa]").forEach((el) => {
-    const text = el.dataset.waText || "Hi Studiolab, I'd like to talk about a project.";
+  const WA_ICON =
+    '<svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28"/></svg>';
+
+  // Builds the wa.me link from data-wa-text and gives every WhatsApp button its icon.
+  // Called again whenever a calculator changes the message.
+  const setWa = (el) => {
+    const text = (el.dataset.waText || "Hi Studiolab, I'd like to talk about a project.").replace(/\u00a0/g, " ");
     el.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    if (el.classList.contains("btn") && !el.querySelector("svg")) el.insertAdjacentHTML("afterbegin", WA_ICON);
+  };
+  document.querySelectorAll("[data-wa]").forEach(setWa);
+
+  // Price tables: <table data-wa-service="AI video"> gets a WhatsApp button per row,
+  // with the package name and price already written into the message.
+  document.querySelectorAll("table[data-wa-service]").forEach((table) => {
+    const service = table.dataset.waService;
+    const headRow = table.querySelector("thead tr");
+    if (headRow) {
+      const th = document.createElement("th");
+      th.textContent = T.order;
+      headRow.appendChild(th);
+    }
+    table.querySelectorAll("tbody tr").forEach((tr) => {
+      const cells = tr.querySelectorAll("td");
+      if (cells.length < 3) return;
+      const pkg = cells[0].textContent.trim();
+      const numEl = cells[2].querySelector(".num");
+      const subEl = cells[2].querySelector(".sub");
+      const price = (numEl ? numEl.textContent : cells[2].textContent).trim() + (subEl ? ` (${subEl.textContent.trim()})` : "");
+      const a = document.createElement("a");
+      a.className = "btn btn--sm btn--wa";
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.dataset.wa = "";
+      a.dataset.waText = T.waRow(service, pkg, price);
+      a.setAttribute("aria-label", T.waAria(pkg));
+      a.textContent = T.waLabel;
+      const td = document.createElement("td");
+      td.appendChild(a);
+      tr.appendChild(td);
+      setWa(a);
+    });
   });
 
   /* ---------------------------------------------------------------------
@@ -452,6 +509,7 @@
     const outStudio = calc.querySelector("[data-out='studio']");
     const outSaving = calc.querySelector("[data-out='saving']");
     const studioRate = parseFloat(calc.dataset.studioRate || "450"); // AED per minute, traditional studio midpoint
+    const waBtn = calc.querySelector("[data-wa-calc]");
 
     const money = T.money;
     const paint = (input) => {
@@ -482,6 +540,11 @@
       outTotal.textContent = money(total);
       outStudio.textContent = money(studio);
       outSaving.textContent = studio > total ? T.less(Math.round((1 - total / studio) * 100)) : T.dash;
+      if (waBtn) {
+        const tierName = (tier.querySelector("strong") || tier).textContent.trim();
+        waBtn.dataset.waText = T.waDubbing(m, l, tierName, rate, total);
+        setWa(waBtn);
+      }
     };
 
     tiers.forEach((btn) =>
@@ -510,6 +573,7 @@
     const outFill = calc.querySelector("[data-out='fill']");
     const single = parseFloat(calc.dataset.single || "2500");
     const money = T.money;
+    const waBtn = calc.querySelector("[data-wa-calc]");
 
     // per-unit price ladder: 1 → 2500, 5 → 2000, 10 → 1750, 12/mo → 1500, 24/mo → 1250
     const unitFor = (n) => {
@@ -532,6 +596,10 @@
       const saving = Math.round((1 - unit / single) * 100);
       outSaving.textContent = saving > 0 ? T.save(saving) : T.single;
       if (outFill) outFill.style.setProperty("--w", (unit / single) * 100 + "%");
+      if (waBtn) {
+        waBtn.dataset.waText = T.waVideo(n, unit, total);
+        setWa(waBtn);
+      }
     };
 
     qty.addEventListener("input", update);
