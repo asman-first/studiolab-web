@@ -420,9 +420,9 @@
   /* ---------------------------------------------------------------------
      Forms → Formspree
      Paste your Formspree endpoint below (Formspree → your form →
-     Integration → "https://formspree.io/f/xxxxxxxx"). Both the contact
-     and the careers form use it; the hidden "form" and "subject" fields
-     tell the two apart in your inbox. A data-endpoint attribute on a
+     Integration → "https://formspree.io/f/xxxxxxxx"). The contact form
+     uses it; the hidden "form" and "subject" fields name the page and the
+     topic in your inbox. A data-endpoint attribute on a
      <form> overrides this default for that form only.
      --------------------------------------------------------------------- */
 
