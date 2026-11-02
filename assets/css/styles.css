@@ -739,6 +739,32 @@ ol {
   letter-spacing: 0;
 }
 
+.langs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Russian labels are longer: keep nav items on one line and tighten the
+   spacing just above the mobile breakpoint so the header still fits. */
+html[lang="ru"] .nav__link {
+  white-space: nowrap;
+}
+
+@media (min-width: 1041px) and (max-width: 1200px) {
+  html[lang="ru"] .nav {
+    gap: 1.1rem;
+  }
+
+  html[lang="ru"] .nav__list {
+    gap: 1.1rem;
+  }
+
+  html[lang="ru"] .nav__cta {
+    gap: 0.4rem;
+  }
+}
+
 .nav-toggle {
   display: none;
   position: relative;

@@ -4,8 +4,11 @@
 //
 // English pages (root)  use partials/header.html    + partials/footer.html
 // Arabic pages  (ar/)   use partials/header.ar.html + partials/footer.ar.html
-// The token {{alt}} inside a header becomes the link to the same page in the
-// other language, so the language switch is always correct.
+// Russian pages (ru/)   use partials/header.ru.html + partials/footer.ru.html
+//
+// Inside a header, the token {{alt:xx}} becomes the link to the same page in
+// language xx (en, ar or ru), so the language switch is always correct.
+// The nav link that points at the current page gets aria-current="page".
 //
 // Run after editing a partial:  node scripts/sync-partials.mjs
 
@@ -23,9 +26,13 @@ const inject = (html, name, content) => {
 };
 
 const langs = [
-  { dir: "", header: "partials/header.html", footer: "partials/footer.html", alt: (f) => `ar/${f}` },
-  { dir: "ar", header: "partials/header.ar.html", footer: "partials/footer.ar.html", alt: (f) => `../${f}` },
+  { code: "en", dir: "", header: "partials/header.html", footer: "partials/footer.html" },
+  { code: "ar", dir: "ar", header: "partials/header.ar.html", footer: "partials/footer.ar.html" },
+  { code: "ru", dir: "ru", header: "partials/header.ru.html", footer: "partials/footer.ru.html" },
 ];
+
+// Relative link from a page in language `from` to the same page in language `to`.
+const linkTo = (from, to, file) => (from.dir ? "../" : "") + (to.dir ? `${to.dir}/` : "") + file;
 
 for (const lang of langs) {
   const folder = join(root, lang.dir);
@@ -41,8 +48,8 @@ for (const lang of langs) {
 
     let nav = header
       .replace(`class="nav__link" href="${file}"`, `class="nav__link" href="${file}" aria-current="page"`)
-      .replace(`class="btn btn--sm" href="${file}"`, `class="btn btn--sm" href="${file}" aria-current="page"`)
-      .replaceAll("{{alt}}", lang.alt(file));
+      .replace(`class="btn btn--sm" href="${file}"`, `class="btn btn--sm" href="${file}" aria-current="page"`);
+    for (const other of langs) nav = nav.replaceAll(`{{alt:${other.code}}}`, linkTo(lang, other, file));
 
     const h = inject(html, "header", nav);
     const f = inject(h.html, "footer", footer);

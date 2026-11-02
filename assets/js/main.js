@@ -5,10 +5,14 @@
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const isArabic = (document.documentElement.lang || "").toLowerCase().startsWith("ar");
+  const lang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+  // Number formatting: Russian groups thousands with a space (7 000), the others with a comma.
+  const numLocale = lang === "ru" ? "ru-RU" : "en-US";
+  const num = (v) => Math.round(v).toLocaleString(numLocale);
 
   /* ---------------------------------------------------------------------
-     Strings used by scripts (calculators, forms). English and Arabic.
+     Strings used by scripts (calculators, forms). English, Arabic, Russian.
+     The page language comes from <html lang="…">.
      --------------------------------------------------------------------- */
 
   const arCount = (n, one, two, few, many) => {
@@ -18,41 +22,68 @@
     return `${n} ${many}`;
   };
 
-  const T = isArabic
-    ? {
-        money: (v) => `${Math.round(v).toLocaleString("en-US")} درهم`,
-        perMin: (v) => `${Math.round(v).toLocaleString("en-US")} درهم / دقيقة`,
-        minutes: (n) => arCount(n, "دقيقة واحدة", "دقيقتان", "دقائق", "دقيقة"),
-        languages: (n) => arCount(n, "لغة واحدة", "لغتان", "لغات", "لغة"),
-        videos: (n) => arCount(n, "فيديو واحد", "فيديوهان", "فيديوهات", "فيديو"),
-        each: (v) => `${Math.round(v).toLocaleString("en-US")} درهم لكل فيديو`,
-        less: (p) => `أقل بنسبة ${p}%`,
-        save: (p) => `توفّر ${p}% لكل فيديو`,
-        single: "سعر الفيديو الواحد",
-        dash: "—",
-        sending: "جارٍ الإرسال…",
-        received: "وصلت رسالتك. سنرد عليك مباشرة من المختبر.",
-        notConfigured: "النموذج غير متاح مؤقتًا. يرجى التواصل عبر واتساب أو الاتصال على +971 4 572 8386.",
-        failed: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال على +971 4 572 8386.",
-        network: "خطأ في الاتصال. يرجى التحقق من الإنترنت والمحاولة مجددًا.",
-      }
-    : {
-        money: (v) => "AED " + Math.round(v).toLocaleString("en-US"),
-        perMin: (v) => "AED " + Math.round(v).toLocaleString("en-US") + " / min",
-        minutes: (n) => `${n} min`,
-        languages: (n) => `${n} ${n === 1 ? "language" : "languages"}`,
-        videos: (n) => `${n} ${n === 1 ? "video" : "videos"}`,
-        each: (v) => "AED " + Math.round(v).toLocaleString("en-US") + " each",
-        less: (p) => `${p}% less`,
-        save: (p) => `You save ${p}% per video`,
-        single: "Single-video price",
-        dash: "—",
-        sending: "Sending…",
-        received: "Received. We'll reply directly from the Lab.",
-        notConfigured: "The form is temporarily unavailable. Please call +971 4 572 8386.",
-        failed: "Something went wrong. Please try again or call +971 4 572 8386.",
-        network: "Network error. Please check your connection and try again.",
-      };
+  // Russian plurals: 1 минута, 2 минуты, 5 минут, 21 минута
+  const ruCount = (n, one, few, many) => {
+    const m10 = n % 10;
+    const m100 = n % 100;
+    const word = m10 === 1 && m100 !== 11 ? one : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? few : many;
+    return `${n} ${word}`;
+  };
+
+  const STRINGS = {
+    en: {
+      money: (v) => `AED ${num(v)}`,
+      perMin: (v) => `AED ${num(v)} / min`,
+      minutes: (n) => `${n} min`,
+      languages: (n) => `${n} ${n === 1 ? "language" : "languages"}`,
+      videos: (n) => `${n} ${n === 1 ? "video" : "videos"}`,
+      each: (v) => `AED ${num(v)} each`,
+      less: (p) => `${p}% less`,
+      save: (p) => `You save ${p}% per video`,
+      single: "Single-video price",
+      dash: "—",
+      sending: "Sending…",
+      received: "Received. We'll reply directly from the Lab.",
+      notConfigured: "The form is temporarily unavailable. Please call +971 4 572 8386.",
+      failed: "Something went wrong. Please try again or call +971 4 572 8386.",
+      network: "Network error. Please check your connection and try again.",
+    },
+    ar: {
+      money: (v) => `${num(v)} درهم`,
+      perMin: (v) => `${num(v)} درهم / دقيقة`,
+      minutes: (n) => arCount(n, "دقيقة واحدة", "دقيقتان", "دقائق", "دقيقة"),
+      languages: (n) => arCount(n, "لغة واحدة", "لغتان", "لغات", "لغة"),
+      videos: (n) => arCount(n, "فيديو واحد", "فيديوهان", "فيديوهات", "فيديو"),
+      each: (v) => `${num(v)} درهم لكل فيديو`,
+      less: (p) => `أقل بنسبة ${p}%`,
+      save: (p) => `توفّر ${p}% لكل فيديو`,
+      single: "سعر الفيديو الواحد",
+      dash: "—",
+      sending: "جارٍ الإرسال…",
+      received: "وصلت رسالتك. سنرد عليك مباشرة من المختبر.",
+      notConfigured: "النموذج غير متاح مؤقتًا. يرجى التواصل عبر واتساب أو الاتصال على +971 4 572 8386.",
+      failed: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال على +971 4 572 8386.",
+      network: "خطأ في الاتصال. يرجى التحقق من الإنترنت والمحاولة مجددًا.",
+    },
+    ru: {
+      money: (v) => `${num(v)} AED`,
+      perMin: (v) => `${num(v)} AED / мин`,
+      minutes: (n) => ruCount(n, "минута", "минуты", "минут"),
+      languages: (n) => ruCount(n, "язык", "языка", "языков"),
+      videos: (n) => `${n} видео`,
+      each: (v) => `${num(v)} AED за видео`,
+      less: (p) => `на ${p}% дешевле`,
+      save: (p) => `Экономия ${p}% на каждом видео`,
+      single: "Цена одного видео",
+      dash: "—",
+      sending: "Отправляем…",
+      received: "Получили. Ответим вам напрямую из студии.",
+      notConfigured: "Форма временно недоступна. Напишите в WhatsApp или позвоните: +971 4 572 8386.",
+      failed: "Что-то пошло не так. Попробуйте ещё раз или позвоните: +971 4 572 8386.",
+      network: "Ошибка сети. Проверьте подключение и попробуйте снова.",
+    },
+  };
+  const T = STRINGS[lang] || STRINGS.en;
 
   /* ---------------------------------------------------------------------
      WhatsApp
@@ -155,7 +186,7 @@
   const counters = document.querySelectorAll("[data-count]");
   if (counters.length) {
     const fmt = (v, decimals, grouped) =>
-      grouped ? v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) : v.toFixed(decimals);
+      v.toLocaleString(numLocale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals, useGrouping: grouped });
 
     const run = (el) => {
       const target = parseFloat(el.dataset.count);
