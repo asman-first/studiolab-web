@@ -93,6 +93,11 @@ const FORM_ENDPOINT = "https://formspree.io/f/xxxxxxxx";
 
 ## Публикация
 
+Сейчас сайт опубликован на GitHub Pages из репозитория `asman-first/studiolab-web`:
+https://asman-first.github.io/studiolab-web/ (арабская версия: `/ar/`).
+Каждый `git push` в ветку `main` обновляет сайт примерно за минуту.
+Привязать домен studiolab.ae: в настройках репозитория Pages → Custom domain, плюс CNAME-запись у регистратора.
+
 Подойдёт любой статический хостинг: Cloudflare Pages, Netlify, Vercel, GitHub Pages.
 Канонические адреса и sitemap используют «чистые» URL вида `/about`, как на текущем сайте.
 Cloudflare Pages, Netlify и Vercel по умолчанию отдают `about.html` по адресу `/about`.
