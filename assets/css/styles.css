@@ -712,6 +712,33 @@ ol {
   gap: 0.5rem;
 }
 
+.lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 40px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-2);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.lang:hover {
+  color: var(--fg);
+  border-color: var(--acc-2);
+}
+
+.lang[lang="ar"] {
+  font-family: "IBM Plex Sans Arabic", var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+
 .nav-toggle {
   display: none;
   position: relative;
@@ -1254,13 +1281,13 @@ ol {
 
 .offer__list li {
   position: relative;
-  padding-left: 1.4rem;
+  padding-inline-start: 1.4rem;
 }
 
 .offer__list li::before {
   content: "";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0.55em;
   width: 10px;
   height: 6px;
@@ -1288,8 +1315,9 @@ ol {
 
 .price-table th,
 .price-table td {
-  text-align: left;
-  padding: 0.9rem 1rem 0.9rem 0;
+  text-align: start;
+  padding-block: 0.9rem;
+  padding-inline: 0 1rem;
   border-bottom: 1px solid var(--line);
   vertical-align: top;
 }
@@ -1305,8 +1333,8 @@ ol {
 
 .price-table td:last-child,
 .price-table th:last-child {
-  text-align: right;
-  padding-right: 0;
+  text-align: end;
+  padding-inline-end: 0;
   white-space: nowrap;
 }
 
@@ -1373,7 +1401,8 @@ ol {
 
 .ladder__fill {
   position: absolute;
-  inset: 0 auto 0 0;
+  inset-block: 0;
+  inset-inline: 0 auto;
   width: 0;
   border-radius: inherit;
   background: var(--grad);
@@ -1840,7 +1869,7 @@ input[type="range"]::-moz-range-thumb {
 
 @media (min-width: 1100px) {
   .step:not(:last-child)::before {
-    right: -1.5rem;
+    inset-inline-end: -1.5rem;
   }
 }
 
@@ -1848,7 +1877,7 @@ input[type="range"]::-moz-range-thumb {
   content: "";
   position: absolute;
   top: -4px;
-  left: 0;
+  inset-inline-start: 0;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -2078,20 +2107,21 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .metric {
-  padding: 2rem 1.5rem 2rem 0;
+  padding-block: 2rem;
+  padding-inline: 0 1.5rem;
   display: grid;
   gap: 0.4rem;
 }
 
 .metric + .metric {
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--line);
+  padding-inline-start: 1.5rem;
+  border-inline-start: 1px solid var(--line);
 }
 
 @media (max-width: 640px) {
   .metric + .metric {
-    padding-left: 0;
-    border-left: 0;
+    padding-inline-start: 0;
+    border-inline-start: 0;
     border-top: 1px solid var(--line);
   }
 }
@@ -2252,7 +2282,11 @@ input[type="range"]::-moz-range-thumb {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23e9f0ff' stroke-opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
+}
+
+[dir="rtl"] .field select {
+  background-position: left 1rem center;
 }
 
 .field textarea {
@@ -2367,7 +2401,7 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   display: grid;
   gap: 2rem;
-  text-align: left;
+  text-align: start;
 }
 
 .cta .h-1 {
@@ -2518,4 +2552,149 @@ input[type="range"]::-moz-range-thumb {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* ==========================================================================
+   Arabic / RTL
+   Pages under ar/ set <html lang="ar" dir="rtl">. The layout already uses
+   logical properties; this block swaps the typeface, removes Latin-only
+   tracking and uppercase, mirrors arrows and range tracks.
+   ========================================================================== */
+
+html[dir="rtl"] {
+  --font-display: "IBM Plex Sans Arabic", "Inter Tight", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Sans Arabic", "JetBrains Mono", monospace;
+}
+
+html[dir="rtl"] body {
+  line-height: 1.75;
+}
+
+html[dir="rtl"] .h-display,
+html[dir="rtl"] .h-1,
+html[dir="rtl"] .h-2,
+html[dir="rtl"] .h-3,
+html[dir="rtl"] .statement,
+html[dir="rtl"] .quote__text,
+html[dir="rtl"] .stat__value,
+html[dir="rtl"] .metric__value,
+html[dir="rtl"] .offer__amount,
+html[dir="rtl"] .product__metric,
+html[dir="rtl"] .calc__total,
+html[dir="rtl"] .cell__title,
+html[dir="rtl"] .row__title,
+html[dir="rtl"] .step__title,
+html[dir="rtl"] .post__title,
+html[dir="rtl"] .col__title,
+html[dir="rtl"] .feature__title,
+html[dir="rtl"] .compare__title,
+html[dir="rtl"] .ladder__value,
+html[dir="rtl"] .detail__value,
+html[dir="rtl"] .calc__control output,
+html[dir="rtl"] .calc__segment strong,
+html[dir="rtl"] .compare__meta b,
+html[dir="rtl"] .price-table .num,
+html[dir="rtl"] .btn,
+html[dir="rtl"] .link,
+html[dir="rtl"] .nav__link,
+html[dir="rtl"] .faq summary,
+html[dir="rtl"] .wa-float,
+html[dir="rtl"] .code {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .h-display { line-height: 1.12; font-size: clamp(2.3rem, 5.6vw, 5.4rem); }
+html[dir="rtl"] .h-1 { line-height: 1.14; font-size: clamp(2.2rem, 5vw, 4.4rem); }
+html[dir="rtl"] .h-2 { line-height: 1.2; }
+html[dir="rtl"] .h-3,
+html[dir="rtl"] .statement,
+html[dir="rtl"] .quote__text { line-height: 1.3; }
+html[dir="rtl"] .cell__title,
+html[dir="rtl"] .row__title,
+html[dir="rtl"] .step__title,
+html[dir="rtl"] .post__title,
+html[dir="rtl"] .feature__title { line-height: 1.35; }
+html[dir="rtl"] .lead { line-height: 1.7; }
+html[dir="rtl"] .h-display em,
+html[dir="rtl"] .h-1 em,
+html[dir="rtl"] .h-2 em,
+html[dir="rtl"] .h-3 em,
+html[dir="rtl"] .statement em,
+html[dir="rtl"] .quote__text em { padding-inline-end: 0.08em; }
+
+/* Mono labels: no uppercase, no tracking in Arabic */
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .mono,
+html[dir="rtl"] .stat__label,
+html[dir="rtl"] .metric__label,
+html[dir="rtl"] .cell__index,
+html[dir="rtl"] .offer__unit,
+html[dir="rtl"] .offer__time,
+html[dir="rtl"] .pill,
+html[dir="rtl"] .tag,
+html[dir="rtl"] .chip,
+html[dir="rtl"] .step__num,
+html[dir="rtl"] .row__index,
+html[dir="rtl"] .feature__num,
+html[dir="rtl"] .post__meta,
+html[dir="rtl"] .footer-title,
+html[dir="rtl"] .footer-bottom,
+html[dir="rtl"] .field label,
+html[dir="rtl"] .detail__label,
+html[dir="rtl"] .calc__control label,
+html[dir="rtl"] .calc__total-label,
+html[dir="rtl"] .calc__segment span,
+html[dir="rtl"] .product__metric-label,
+html[dir="rtl"] .quote__cite,
+html[dir="rtl"] .days__label,
+html[dir="rtl"] .compare__meta,
+html[dir="rtl"] .compare__gain,
+html[dir="rtl"] .ladder__value small,
+html[dir="rtl"] .price-table th,
+html[dir="rtl"] .lang {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.86rem;
+}
+
+html[dir="rtl"] .tag,
+html[dir="rtl"] .chip,
+html[dir="rtl"] .pill { font-size: 0.82rem; }
+
+/* Mirror directional icons */
+html[dir="rtl"] .arrow {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .btn:hover .arrow,
+html[dir="rtl"] .link:hover .arrow {
+  transform: scaleX(-1) translate(3px, -3px);
+}
+
+/* Range inputs run right-to-left in RTL */
+html[dir="rtl"] input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(270deg, var(--acc) 0%, var(--acc-2) var(--p, 50%), var(--bg-4) var(--p, 50%));
+}
+
+/* Marquee reads right to left */
+html[dir="rtl"] .marquee__track {
+  animation-name: marquee-rtl;
+}
+
+@keyframes marquee-rtl {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+/* Numbers and Latin fragments inside Arabic text keep their direction */
+html[dir="rtl"] [dir="ltr"] {
+  unicode-bidi: isolate;
+}
+
+/* The brand wordmark stays Latin and left-to-right */
+html[dir="rtl"] .brand span {
+  font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.03em;
 }

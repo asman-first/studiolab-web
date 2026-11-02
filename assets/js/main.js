@@ -5,6 +5,54 @@
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isArabic = (document.documentElement.lang || "").toLowerCase().startsWith("ar");
+
+  /* ---------------------------------------------------------------------
+     Strings used by scripts (calculators, forms). English and Arabic.
+     --------------------------------------------------------------------- */
+
+  const arCount = (n, one, two, few, many) => {
+    if (n === 1) return one;
+    if (n === 2) return two;
+    if (n >= 3 && n <= 10) return `${n} ${few}`;
+    return `${n} ${many}`;
+  };
+
+  const T = isArabic
+    ? {
+        money: (v) => `${Math.round(v).toLocaleString("en-US")} درهم`,
+        perMin: (v) => `${Math.round(v).toLocaleString("en-US")} درهم / دقيقة`,
+        minutes: (n) => arCount(n, "دقيقة واحدة", "دقيقتان", "دقائق", "دقيقة"),
+        languages: (n) => arCount(n, "لغة واحدة", "لغتان", "لغات", "لغة"),
+        videos: (n) => arCount(n, "فيديو واحد", "فيديوهان", "فيديوهات", "فيديو"),
+        each: (v) => `${Math.round(v).toLocaleString("en-US")} درهم لكل فيديو`,
+        less: (p) => `أقل بنسبة ${p}%`,
+        save: (p) => `توفّر ${p}% لكل فيديو`,
+        single: "سعر الفيديو الواحد",
+        dash: "—",
+        sending: "جارٍ الإرسال…",
+        received: "وصلت رسالتك. سنرد عليك مباشرة من المختبر.",
+        notConfigured: "النموذج غير متاح مؤقتًا. يرجى التواصل عبر واتساب أو الاتصال على +971 4 572 8386.",
+        failed: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال على +971 4 572 8386.",
+        network: "خطأ في الاتصال. يرجى التحقق من الإنترنت والمحاولة مجددًا.",
+      }
+    : {
+        money: (v) => "AED " + Math.round(v).toLocaleString("en-US"),
+        perMin: (v) => "AED " + Math.round(v).toLocaleString("en-US") + " / min",
+        minutes: (n) => `${n} min`,
+        languages: (n) => `${n} ${n === 1 ? "language" : "languages"}`,
+        videos: (n) => `${n} ${n === 1 ? "video" : "videos"}`,
+        each: (v) => "AED " + Math.round(v).toLocaleString("en-US") + " each",
+        less: (p) => `${p}% less`,
+        save: (p) => `You save ${p}% per video`,
+        single: "Single-video price",
+        dash: "—",
+        sending: "Sending…",
+        received: "Received. We'll reply directly from the Lab.",
+        notConfigured: "The form is temporarily unavailable. Please call +971 4 572 8386.",
+        failed: "Something went wrong. Please try again or call +971 4 572 8386.",
+        network: "Network error. Please check your connection and try again.",
+      };
 
   /* ---------------------------------------------------------------------
      WhatsApp
@@ -303,7 +351,7 @@
     };
     const done = () => {
       form.reset();
-      say(form.dataset.success || "Received. We'll reply directly from the Lab.", "is-ok");
+      say(form.dataset.success || T.received, "is-ok");
     };
 
     form.addEventListener("submit", async (e) => {
@@ -321,12 +369,12 @@
       const endpoint = form.dataset.endpoint || FORM_ENDPOINT;
       if (!endpoint) {
         console.warn("[studiolab] FORM_ENDPOINT is empty in assets/js/main.js, so the form cannot send.");
-        say("The form is temporarily unavailable. Please call +971 4 572 8386.", "is-error");
+        say(T.notConfigured, "is-error");
         return;
       }
 
       submit && (submit.disabled = true);
-      say("Sending…");
+      say(T.sending);
 
       try {
         const res = await fetch(endpoint, {
@@ -345,9 +393,9 @@
         } catch (_) {
           /* non-JSON error body */
         }
-        say(message || "Something went wrong. Please try again or call +971 4 572 8386.", "is-error");
+        say(message || T.failed, "is-error");
       } catch (err) {
-        say("Network error. Please check your connection and try again.", "is-error");
+        say(T.network, "is-error");
       } finally {
         submit && (submit.disabled = false);
       }
@@ -374,7 +422,7 @@
     const outSaving = calc.querySelector("[data-out='saving']");
     const studioRate = parseFloat(calc.dataset.studioRate || "450"); // AED per minute, traditional studio midpoint
 
-    const money = (v) => "AED " + Math.round(v).toLocaleString("en-US");
+    const money = T.money;
     const paint = (input) => {
       const p = ((input.value - input.min) / (input.max - input.min)) * 100;
       input.style.setProperty("--p", p + "%");
@@ -395,14 +443,14 @@
 
       paint(minutes);
       paint(languages);
-      outMinutes.textContent = m + (m === 1 ? " min" : " min");
-      outLanguages.textContent = l + (l === 1 ? " language" : " languages");
-      outRate.textContent = money(rate) + " / min";
+      outMinutes.textContent = T.minutes(m);
+      outLanguages.textContent = T.languages(l);
+      outRate.textContent = T.perMin(rate);
       outList.textContent = money(list);
-      outDiscount.textContent = discount ? "−" + Math.round(discount * 100) + "%" : "—";
+      outDiscount.textContent = discount ? "−" + Math.round(discount * 100) + "%" : T.dash;
       outTotal.textContent = money(total);
       outStudio.textContent = money(studio);
-      outSaving.textContent = studio > total ? Math.round((1 - total / studio) * 100) + "% less" : "—";
+      outSaving.textContent = studio > total ? T.less(Math.round((1 - total / studio) * 100)) : T.dash;
     };
 
     tiers.forEach((btn) =>
@@ -430,7 +478,7 @@
     const outSaving = calc.querySelector("[data-out='saving']");
     const outFill = calc.querySelector("[data-out='fill']");
     const single = parseFloat(calc.dataset.single || "2500");
-    const money = (v) => "AED " + Math.round(v).toLocaleString("en-US");
+    const money = T.money;
 
     // per-unit price ladder: 1 → 2500, 5 → 2000, 10 → 1750, 12/mo → 1500, 24/mo → 1250
     const unitFor = (n) => {
@@ -447,11 +495,11 @@
       const total = unit * n;
       const p = ((qty.value - qty.min) / (qty.max - qty.min)) * 100;
       qty.style.setProperty("--p", p + "%");
-      outQty.textContent = n + (n === 1 ? " video" : " videos");
+      outQty.textContent = T.videos(n);
       outTotal.textContent = money(total);
-      outEach.textContent = money(unit) + " each";
+      outEach.textContent = T.each(unit);
       const saving = Math.round((1 - unit / single) * 100);
-      outSaving.textContent = saving > 0 ? "You save " + saving + "% per video" : "Single-video price";
+      outSaving.textContent = saving > 0 ? T.save(saving) : T.single;
       if (outFill) outFill.style.setProperty("--w", (unit / single) * 100 + "%");
     };
 

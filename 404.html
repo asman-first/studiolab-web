@@ -7,23 +7,37 @@
   <title>Page not found — Studiolab Technologies</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#060913">
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <script>
+    // The site may live at the domain root (studiolab.ae) or in a sub-path
+    // (GitHub Pages preview). Work out the base once and use it for links.
+    (function () {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var base = /github\.io$/.test(location.hostname) && parts.length ? '/' + parts[0] + '/' : '/';
+      document.write('<link rel="icon" href="' + base + 'assets/img/favicon.svg" type="image/svg+xml">');
+      document.write('<link rel="stylesheet" href="' + base + 'assets/css/styles.css">');
+      window.__base = base;
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
 <main id="main" class="error-page">
   <div class="stack" style="--stack:1.5rem">
     <p class="code">404</p>
-    <h1 class="h-2">This experiment didn't <em>ship.</em></h1>
+    <h1 class="h-2">This page didn't <em>ship.</em></h1>
     <p class="lead" style="margin-inline:auto">The page you're looking for doesn't exist or has moved.</p>
     <div class="actions" style="justify-content:center">
-      <a class="btn btn--lg" href="/">Back to home</a>
-      <a class="btn btn--ghost btn--lg" href="/contact.html">Contact us</a>
+      <a class="btn btn--lg" href="/" data-base-link="">Back to home</a>
+      <a class="btn btn--ghost btn--lg" href="/contact.html" data-base-link="contact.html">Contact us</a>
     </div>
   </div>
 </main>
+<script>
+  document.querySelectorAll('[data-base-link]').forEach(function (a) {
+    a.href = (window.__base || '/') + a.getAttribute('data-base-link');
+  });
+</script>
 </body>
 </html>
