@@ -42,11 +42,6 @@
       save: (p) => `You save ${p}% per video`,
       single: "Single-video price",
       dash: "—",
-      sending: "Sending…",
-      received: "Received. We'll reply directly from the Lab.",
-      notConfigured: "The form is temporarily unavailable. Please call +971 4 572 8386.",
-      failed: "Something went wrong. Please try again or call +971 4 572 8386.",
-      network: "Network error. Please check your connection and try again.",
       order: "Order",
       waLabel: "WhatsApp",
       waAria: (pkg) => `Order on WhatsApp: ${pkg}`,
@@ -65,11 +60,6 @@
       save: (p) => `توفّر ${p}% لكل فيديو`,
       single: "سعر الفيديو الواحد",
       dash: "—",
-      sending: "جارٍ الإرسال…",
-      received: "وصلت رسالتك. سنرد عليك مباشرة من المختبر.",
-      notConfigured: "النموذج غير متاح مؤقتًا. يرجى التواصل عبر واتساب أو الاتصال على +971 4 572 8386.",
-      failed: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال على +971 4 572 8386.",
-      network: "خطأ في الاتصال. يرجى التحقق من الإنترنت والمحاولة مجددًا.",
       order: "اطلب",
       waLabel: "واتساب",
       waAria: (pkg) => `اطلب عبر واتساب: ${pkg}`,
@@ -88,11 +78,6 @@
       save: (p) => `Экономия ${p}% на каждом видео`,
       single: "Цена одного видео",
       dash: "—",
-      sending: "Отправляем…",
-      received: "Получили. Ответим вам напрямую из студии.",
-      notConfigured: "Форма временно недоступна. Напишите в WhatsApp или позвоните: +971 4 572 8386.",
-      failed: "Что-то пошло не так. Попробуйте ещё раз или позвоните: +971 4 572 8386.",
-      network: "Ошибка сети. Проверьте подключение и попробуйте снова.",
       order: "Заказать",
       waLabel: "WhatsApp",
       waAria: (pkg) => `Заказать в WhatsApp: ${pkg}`,
@@ -416,79 +401,6 @@
     resize();
     start();
   }
-
-  /* ---------------------------------------------------------------------
-     Forms → Formspree
-     Paste your Formspree endpoint below (Formspree → your form →
-     Integration → "https://formspree.io/f/xxxxxxxx"). The contact form
-     uses it; the hidden "form" and "subject" fields name the page and the
-     topic in your inbox. A data-endpoint attribute on a
-     <form> overrides this default for that form only.
-     --------------------------------------------------------------------- */
-
-  const FORM_ENDPOINT = "";
-
-  document.querySelectorAll("form[data-form]").forEach((form) => {
-    const status = form.querySelector(".form-status");
-    const submit = form.querySelector('button[type="submit"]');
-    const say = (msg, kind) => {
-      if (!status) return;
-      status.textContent = msg;
-      status.classList.remove("is-ok", "is-error");
-      if (kind) status.classList.add(kind);
-    };
-    const done = () => {
-      form.reset();
-      say(form.dataset.success || T.received, "is-ok");
-    };
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-
-      const data = new FormData(form);
-      // Honeypot: real visitors never see this field. Formspree also checks it server-side.
-      if (data.get("_gotcha")) {
-        done();
-        return;
-      }
-      data.set("page", location.href);
-
-      const endpoint = form.dataset.endpoint || FORM_ENDPOINT;
-      if (!endpoint) {
-        console.warn("[studiolab] FORM_ENDPOINT is empty in assets/js/main.js, so the form cannot send.");
-        say(T.notConfigured, "is-error");
-        return;
-      }
-
-      submit && (submit.disabled = true);
-      say(T.sending);
-
-      try {
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: data,
-        });
-        if (res.ok) {
-          done();
-          return;
-        }
-        let message = "";
-        try {
-          const json = await res.json();
-          if (Array.isArray(json.errors)) message = json.errors.map((er) => er.message).filter(Boolean).join(" ");
-        } catch (_) {
-          /* non-JSON error body */
-        }
-        say(message || T.failed, "is-error");
-      } catch (err) {
-        say(T.network, "is-error");
-      } finally {
-        submit && (submit.disabled = false);
-      }
-    });
-  });
 
   /* ---------------------------------------------------------------------
      Dubbing calculator  (services.html)
