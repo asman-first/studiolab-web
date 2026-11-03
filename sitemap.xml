@@ -6,6 +6,7 @@
   <url><loc>https://studiolab.ae/services/employees</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/services/video</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/services/avatars</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/photoshoot</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/services/dubbing</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/services/websites</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/services/apps</loc><priority>0.8</priority></url>
@@ -22,6 +23,7 @@
   <url><loc>https://studiolab.ae/ar/services/employees</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/services/video</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/services/avatars</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/photoshoot</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/services/dubbing</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/services/websites</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/services/apps</loc><priority>0.7</priority></url>
@@ -38,6 +40,7 @@
   <url><loc>https://studiolab.ae/ru/services/employees</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/services/video</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/services/avatars</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/photoshoot</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/services/dubbing</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/services/websites</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/services/apps</loc><priority>0.7</priority></url>

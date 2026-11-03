@@ -599,6 +599,21 @@ ol {
   color: var(--acc-2);
 }
 
+/* Home: the free-consultation card spans the row under the nine service cards */
+.cells--3 .cell--span {
+  grid-column: 1 / -1;
+}
+
+.cell--span .cell__text {
+  max-width: 62ch;
+}
+
+@media (min-width: 1100px) {
+  .steps.steps--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* Floating WhatsApp */
 .wa-float {
   position: fixed;

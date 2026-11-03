@@ -8,7 +8,7 @@
 ```
 index.html        Главная: офферы с ценами, сравнения «было/стало»
 services.html     Выбор услуги: 8 карточек, бесплатная консультация, FAQ (старые якоря #video и т.п. перенаправляются)
-services/         Отдельная страница каждой услуги: sales-agent, employees, video, avatars, dubbing, websites, apps, automation
+services/         Отдельная страница каждой услуги: sales-agent, employees, video, avatars, photoshoot, dubbing, websites, apps, automation
 about.html        О студии
 expertise.html    Экспертиза, процесс, стек
 portfolio.html    6 продуктов студии
