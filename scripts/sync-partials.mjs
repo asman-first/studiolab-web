@@ -6,11 +6,15 @@
 // Arabic pages  (ar/)   use partials/header.ar.html + partials/footer.ar.html
 // Russian pages (ru/)   use partials/header.ru.html + partials/footer.ru.html
 //
+// Pages may sit one level deeper (services/<slug>.html in each language);
+// relative links inside the partials get the "../" prefix automatically.
+//
 // Inside a header, the token {{alt:xx}} becomes the link to the same page in
 // language xx (en, ar or ru), so the language switch is always correct.
-// The nav link that points at the current page gets aria-current="page".
+// The nav link that points at the current page gets aria-current="page";
+// service pages mark the "Services" link.
 //
-// Run after editing a partial:  node scripts/sync-partials.mjs
+// Run after editing a partial or adding a page:  node scripts/sync-partials.mjs
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -30,9 +34,21 @@ const langs = [
   { code: "ar", dir: "ar", header: "partials/header.ar.html", footer: "partials/footer.ar.html" },
   { code: "ru", dir: "ru", header: "partials/header.ru.html", footer: "partials/footer.ru.html" },
 ];
+const SUBDIRS = ["services"];
 
-// Relative link from a page in language `from` to the same page in language `to`.
-const linkTo = (from, to, file) => (from.dir ? "../" : "") + (to.dir ? `${to.dir}/` : "") + file;
+// All pages of a language, as paths relative to the language root.
+const pagesOf = (lang) => {
+  const folder = join(root, lang.dir);
+  const list = readdirSync(folder).filter((f) => f.endsWith(".html"));
+  for (const sd of SUBDIRS) {
+    const d = join(folder, sd);
+    if (existsSync(d)) list.push(...readdirSync(d).filter((f) => f.endsWith(".html")).map((f) => `${sd}/${f}`));
+  }
+  return list;
+};
+
+// Relative links in a partial (page.html, services/x.html) get the depth prefix.
+const prefixLinks = (html, up) => (up ? html.replace(/href="(?!https?:|mailto:|tel:|#|\.\.\/|\{\{)([^"]+)"/g, (m, h) => `href="${up}${h}"`) : html);
 
 for (const lang of langs) {
   const folder = join(root, lang.dir);
@@ -40,21 +56,25 @@ for (const lang of langs) {
 
   const header = read(lang.header);
   const footer = read(lang.footer);
-  const pages = readdirSync(folder).filter((f) => f.endsWith(".html"));
 
-  for (const file of pages) {
-    const path = join(folder, file);
+  for (const rel of pagesOf(lang)) {
+    const path = join(folder, rel);
     const html = readFileSync(path, "utf8");
+    const depth = rel.split("/").length - 1;
+    const up = "../".repeat(depth);
+    const toRoot = up + (lang.dir ? "../" : "");
+    const navFile = rel.startsWith("services/") ? "services.html" : rel;
 
     let nav = header
-      .replace(`class="nav__link" href="${file}"`, `class="nav__link" href="${file}" aria-current="page"`)
-      .replace(`class="btn btn--sm" href="${file}"`, `class="btn btn--sm" href="${file}" aria-current="page"`);
-    for (const other of langs) nav = nav.replaceAll(`{{alt:${other.code}}}`, linkTo(lang, other, file));
+      .replace(`class="nav__link" href="${navFile}"`, `class="nav__link" href="${navFile}" aria-current="page"`)
+      .replace(`class="btn btn--sm" href="${navFile}"`, `class="btn btn--sm" href="${navFile}" aria-current="page"`);
+    for (const other of langs) nav = nav.replaceAll(`{{alt:${other.code}}}`, toRoot + (other.dir ? `${other.dir}/` : "") + rel);
+    nav = prefixLinks(nav, up);
 
     const h = inject(html, "header", nav);
-    const f = inject(h.html, "footer", footer);
+    const f = inject(h.html, "footer", prefixLinks(footer, up));
     writeFileSync(path, f.html);
-    const label = (lang.dir ? lang.dir + "/" : "") + file;
-    console.log(`${label.padEnd(20)} header:${h.hit ? "ok" : "--"}  footer:${f.hit ? "ok" : "--"}`);
+    const label = (lang.dir ? lang.dir + "/" : "") + rel;
+    console.log(`${label.padEnd(28)} header:${h.hit ? "ok" : "--"}  footer:${f.hit ? "ok" : "--"}`);
   }
 }

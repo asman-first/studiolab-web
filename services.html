@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
+  <script>(function(){var s=location.hash.slice(1);if(/^(sales-agent|employees|video|avatars|dubbing|websites|apps|automation)$/.test(s))location.replace("services/"+s+".html");})();</script>
 </head>
 <body>
 <!-- @header -->
@@ -66,473 +67,95 @@
       <h1 class="h-1 reveal" style="--d:.06s">Eight ways to put AI to work. <em>Priced, scoped, shipped in days.</em></h1>
       <p class="lead reveal" style="--d:.12s">Fixed prices in dirhams, clear timelines, one team in Dubai. Prices exclude 5% VAT. Every project starts with a free consultation, a 30-minute call or a studio visit, then 50% upfront.</p>
       <nav class="chips reveal" style="--d:.18s" aria-label="Jump to a service">
-        <a class="chip" href="#sales-agent">01 AI sales agent</a>
-        <a class="chip" href="#employees">02 AI employees</a>
-        <a class="chip" href="#video">03 AI video</a>
-        <a class="chip" href="#avatars">04 AI avatars</a>
-        <a class="chip" href="#dubbing">05 Dubbing, 150+ languages</a>
-        <a class="chip" href="#websites">06 Websites</a>
-        <a class="chip" href="#apps">07 Business apps</a>
-        <a class="chip" href="#automation">08 Automation</a>
+        <a class="chip" href="services/sales-agent.html">01 AI sales agent</a>
+        <a class="chip" href="services/employees.html">02 AI employees</a>
+        <a class="chip" href="services/video.html">03 AI video</a>
+        <a class="chip" href="services/avatars.html">04 AI avatars</a>
+        <a class="chip" href="services/dubbing.html">05 Dubbing, 150+ languages</a>
+        <a class="chip" href="services/websites.html">06 Websites</a>
+        <a class="chip" href="services/apps.html">07 Business apps</a>
+        <a class="chip" href="services/automation.html">08 Automation</a>
         <a class="chip" href="#consultation">Consultation</a>
       </nav>
     </div>
   </section>
 
-  <!-- 01 AI sales agent -->
-  <section class="section section--line" id="sales-agent">
-    <div class="container split split--sticky">
-      <div>
-        <p class="eyebrow reveal">01 · AI sales agent</p>
-        <h2 class="h-2 mt-3 reveal">An AI salesperson you can't tell from a human, <em>but more effective than one.</em></h2>
-        <p class="lead mt-3 reveal">Lives in WhatsApp, Instagram, Telegram and your website chat and talks like a real manager: replies at a natural pace, answers voice messages with voice, qualifies leads, books consultations, sends payment links and takes payments. Clients don't realise they are talking to AI, and the warm leads go to your team.</p>
-        <div class="reveal mt-4" style="--d:.1s">
-          <div class="offer__price"><span class="offer__amount">from AED <span data-count="7000" data-format="group">7,000</span></span><span class="offer__unit">one-time setup</span></div>
-          <div class="days mt-3" aria-label="Live in 4 to 5 days"><i></i><i></i><i></i><i></i><i class="is-off"></i><span class="days__label">Live in 4–5 days</span></div>
-        </div>
-        <div class="actions mt-4 reveal" style="--d:.15s">
-          <a class="btn btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in the AI sales agent (from AED 7,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Get it on WhatsApp</a>
-          <a class="btn btn--ghost" href="contact.html">Book a consultation</a>
-        </div>
-      </div>
-      <div class="stack" style="--stack:1.5rem">
-        <div class="cells cells--2 reveal">
-          <div class="cell">
-            <span class="cell__index">Included</span>
-            <ul class="offer__list">
-              <li>Arabic, English and Russian out of the box</li>
-              <li>Trained on your catalogue, prices and FAQ</li>
-              <li>Lead qualification and booking of consultations into your calendar</li>
-              <li>Replies to voice messages, with voice</li>
-              <li>Payment links and payments inside the chat</li>
-              <li>Handover to a human when it matters</li>
-              <li>Every conversation logged in your CRM or a sheet</li>
-              <li>Two weeks of tuning after launch</li>
-            </ul>
-          </div>
-          <div class="cell">
-            <span class="cell__index">Best for</span>
-            <ul class="offer__list">
-              <li>Real estate brokers and developers</li>
-              <li>Clinics, dental and aesthetic medicine</li>
-              <li>Restaurants, cloud kitchens and retail</li>
-              <li>Hotels and holiday-home operators</li>
-              <li>Car dealers and rental companies</li>
-            </ul>
-          </div>
-        </div>
-        <div class="compare reveal">
-          <p class="compare__title">New leads that get a reply</p>
-          <div class="compare__row">
-            <div class="compare__meta"><span>Typical team</span><b>about 65%</b></div>
-            <div class="compare__track"><div class="compare__fill" style="--w:65%"></div></div>
-          </div>
-          <div class="compare__row compare__row--us">
-            <div class="compare__meta"><span>Studiolab AI employee</span><b>100%</b></div>
-            <div class="compare__track"><div class="compare__fill" style="--w:100%"></div></div>
-          </div>
-          <p class="compare__gain">Replies like a human, at a natural pace. Clients don't realise they're talking to AI</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 AI employees -->
-  <section class="section section--line" id="employees">
+  <!-- Choose a service -->
+  <section class="section" id="catalog">
     <div class="container">
       <div class="section-head section-head--split">
         <div class="stack">
-          <p class="eyebrow reveal">02 · AI employees</p>
-          <h2 class="h-2 reveal">Roles, not tools. Hire an AI <em>colleague</em>.</h2>
+          <p class="eyebrow reveal">Catalogue</p>
+          <h2 class="h-2 reveal">Pick a service. <em>Then dive in.</em></h2>
         </div>
-        <p class="lead reveal">Each AI employee owns one job end to end, works inside the systems you already use and reports like a person would. Priced per role after a 30-minute consultation.</p>
+        <p class="lead reveal">Each service has its own page with options, prices and a WhatsApp button that already knows what you picked.</p>
       </div>
       <div class="cells cells--3">
         <article class="cell offer reveal">
-          <div class="offer__top"><span class="cell__index">Role</span><span class="offer__time">Per role</span></div>
-          <h3 class="cell__title">AI accountant</h3>
-          <p class="cell__text">Captures supplier invoices and receipts, matches them to orders, reconciles with your books and prepares clean data for e-invoicing, which becomes mandatory in the UAE through 2027.</p>
-          <ul class="offer__list">
-            <li>Invoice and receipt capture, any format</li>
-            <li>Reconciliation with Zoho, Odoo, QuickBooks, SAP B1</li>
-            <li>Weekly cash and payables report</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in an AI accountant." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
+          <div class="offer__top"><span class="cell__index">01</span><span class="offer__time">Live in 4–5 days</span></div>
+          <div class="offer__price"><span class="offer__amount">from AED 7,000</span></div>
+          <h3 class="cell__title">AI sales agent</h3>
+          <p class="cell__text">Talks to leads in WhatsApp, Instagram and Telegram like a real manager, 24/7, in Arabic, English and Russian. Qualifies, books consultations, answers voice notes, takes payments.</p>
+          <div class="days" aria-label="Live in 4 to 5 days"><i></i><i></i><i></i><i></i><i class="is-off"></i><span class="days__label">4–5 days</span></div>
+          <div class="offer__foot"><a class="link link--acc" href="services/sales-agent.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in the AI sales agent (from AED 7,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-        <article class="cell offer reveal" style="--d:.06s">
-          <div class="offer__top"><span class="cell__index">Role</span><span class="offer__time">Per role</span></div>
-          <h3 class="cell__title">AI manager</h3>
-          <p class="cell__text">Keeps the team and the other AI agents on track: assigns tasks, chases deadlines, summarises progress and flags what needs a human decision.</p>
-          <ul class="offer__list">
-            <li>Daily stand-up summary in WhatsApp or Slack</li>
-            <li>Follow-ups on overdue tasks and replies</li>
-            <li>One dashboard across people and agents</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in an AI manager." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
+
+        <article class="cell offer reveal" style="--d:.05s">
+          <div class="offer__top"><span class="cell__index">02</span><span class="offer__time">Per role</span></div>
+          <div class="offer__price"><span class="offer__amount offer__amount--text">Priced per role</span></div>
+          <h3 class="cell__title">AI employees</h3>
+          <p class="cell__text">AI accountant, AI manager or a custom agent for any repetitive job. Works inside your systems and reports like a colleague.</p>
+          <div class="offer__foot"><a class="link link--acc" href="services/employees.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in AI employees." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-        <article class="cell offer reveal" style="--d:.12s">
-          <div class="offer__top"><span class="cell__index">Role</span><span class="offer__time">Per role</span></div>
-          <h3 class="cell__title">Custom AI agent</h3>
-          <p class="cell__text">Support, recruiting, procurement, reporting or anything repetitive with rules. We design the role, connect the data and run it with you for the first month.</p>
-          <ul class="offer__list">
-            <li>Works through APIs, email and documents</li>
-            <li>Approval steps where money or clients are involved</li>
-            <li>Logs and audit trail for every action</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in a custom AI agent." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
+
+        <article class="cell offer reveal" style="--d:.1s">
+          <div class="offer__top"><span class="cell__index">03</span><span class="offer__time">First cut in 3–5 days</span></div>
+          <div class="offer__price"><span class="offer__amount">from AED 2,500</span><span class="offer__unit">per video</span></div>
+          <h3 class="cell__title">AI video production</h3>
+          <p class="cell__text">Ads, brand films, explainers and animated series, fully AI-generated. Packs of 5 and 10, or a monthly pipeline from AED 1,250 per video.</p>
+          <div class="offer__foot"><a class="link link--acc" href="services/video.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in AI video production." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- 03 AI video -->
-  <section class="section section--line" id="video">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div class="stack">
-          <p class="eyebrow reveal">03 · AI video production</p>
-          <h2 class="h-2 reveal">Ads, brand films and animated series. <em>Days, not weeks.</em></h2>
-        </div>
-        <p class="lead reveal">Fully AI-generated video for advertising, companies and film. One video or a monthly pipeline: the more you order, the less each one costs.</p>
-      </div>
-
-      <div class="split">
-        <div class="table-scroll reveal">
-          <table class="price-table" data-wa-service="AI video">
-            <thead><tr><th>Package</th><th>What you get</th><th>Price</th></tr></thead>
-            <tbody>
-              <tr><td>Single video, up to 30 s</td><td>Ad or social clip, one language, 2 revision rounds, first cut in 3–5 days</td><td><span class="num">AED 2,500</span></td></tr>
-              <tr><td>Single video, up to 60 s</td><td>Explainer or product video</td><td><span class="num">AED 4,000</span></td></tr>
-              <tr><td>Pack of 5, up to 30 s</td><td>Different hooks for A/B testing, 7 days</td><td><span class="num">AED 10,000</span><span class="sub">2,000 each</span></td></tr>
-              <tr><td>Pack of 10</td><td>A month of campaign creative, 10 days</td><td><span class="num">AED 17,500</span><span class="sub">1,750 each</span></td></tr>
-              <tr><td>12 videos a month</td><td>Content subscription, 3-month term</td><td><span class="num">AED 18,000</span><span class="sub">per month · 1,500 each</span></td></tr>
-              <tr><td>24 videos a month</td><td>Content subscription, 3-month term</td><td><span class="num">AED 30,000</span><span class="sub">per month · 1,250 each</span></td></tr>
-              <tr><td>Hero film, 60–90 s</td><td>Directed brand film, sound design, two languages</td><td><span class="num">AED 12,000–25,000</span></td></tr>
-              <tr><td>Animated series or cartoon</td><td>Episodes of 1–3 min with consistent characters</td><td><span class="num">AED 6,000–12,000</span><span class="sub">per episode · 6+ episodes −20%</span></td></tr>
-            </tbody>
-          </table>
-          <p class="small muted mt-3">Add-ons: Arabic version +40%, 48-hour rush +50%, your own AI avatar or voice AED 1,500 once, third revision round AED 500.</p>
-        </div>
-
-        <div class="stack" style="--stack:1.5rem">
-          <div class="calc reveal" data-calc="video" data-single="2500" style="grid-template-columns:1fr">
-            <div class="calc__controls">
-              <div class="calc__control">
-                <div class="calc__control-head"><label for="video-qty">How many 30-second videos?</label><output data-out="qty">5 videos</output></div>
-                <input id="video-qty" type="range" min="1" max="24" step="1" value="5" data-qty>
-              </div>
-            </div>
-            <div class="calc__result">
-              <div>
-                <p class="calc__total" data-out="total">AED 10,000</p>
-                <p class="calc__total-label">Total, excl. VAT</p>
-              </div>
-              <div class="calc__lines">
-                <div><span>Per video</span><b data-out="each">AED 2,000 each</b></div>
-                <div><span>Price per video vs. single</span></div>
-              </div>
-              <div class="ladder in"><div class="ladder__row" style="grid-template-columns:1fr"><div class="ladder__track"><div class="ladder__fill" data-out="fill" style="--w:80%"></div></div></div></div>
-              <p class="calc__lines"><span class="is-ok" data-out="saving">You save 20% per video</span></p>
-              <div class="actions"><a class="btn btn--wa" data-wa data-wa-calc data-wa-text="Hi Studiolab, I'd like to order AI video." href="https://wa.me/971553321026" target="_blank" rel="noopener">Order this pack on WhatsApp</a></div>
-            </div>
-          </div>
-
-          <div class="compare reveal">
-            <p class="compare__title">60-second promo video in Dubai</p>
-            <div class="compare__row">
-              <div class="compare__meta"><span>Filmed by a crew</span><b>3–4 weeks · AED 10,000–30,000</b></div>
-              <div class="compare__track"><div class="compare__fill" style="--w:100%"></div></div>
-            </div>
-            <div class="compare__row compare__row--us">
-              <div class="compare__meta"><span>Studiolab, AI-generated</span><b>3–5 days · AED 4,000</b></div>
-              <div class="compare__track"><div class="compare__fill" style="--w:18%"></div></div>
-            </div>
-            <p class="compare__gain">Up to 5× faster, up to 85% cheaper</p>
-          </div>
-        </div>
-      </div>
-      <div class="actions mt-6 reveal">
-        <a class="btn btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in AI video production." href="https://wa.me/971553321026" target="_blank" rel="noopener">Order videos on WhatsApp</a>
-        <a class="btn btn--ghost" href="contact.html">Book a consultation</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 AI avatars -->
-  <section class="section section--line" id="avatars">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div class="stack">
-          <p class="eyebrow reveal">04 · AI avatars</p>
-          <h2 class="h-2 reveal">Film yourself once. <em>Publish forever.</em></h2>
-        </div>
-        <p class="lead reveal">A digital twin of you or your spokesperson, with your voice. New videos from a script in hours, in any language, without a camera.</p>
-      </div>
-      <div class="cells cells--3">
-        <article class="cell offer reveal">
-          <div class="offer__top"><span class="cell__index">Setup</span><span class="offer__time">One-time</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 2,500</span></div>
-          <h3 class="cell__title">Your personal avatar</h3>
-          <ul class="offer__list">
-            <li>5-minute recording by our guide, or at our office in Business Bay</li>
-            <li>Voice clone in your languages</li>
-            <li>Consent and usage agreement for your likeness</li>
-            <li>Test video included</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'd like a personal AI avatar." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
+        <article class="cell offer reveal" style="--d:.15s">
+          <div class="offer__top"><span class="cell__index">04</span><span class="offer__time">2–3 days per video</span></div>
+          <div class="offer__price"><span class="offer__amount">from AED 900</span><span class="offer__unit">per video</span></div>
+          <h3 class="cell__title">AI avatars</h3>
+          <p class="cell__text">Your digital twin with your voice. Film once for AED 2,500, then publish new videos from a script in any language, no camera needed.</p>
+          <div class="offer__foot"><a class="link link--acc" href="services/avatars.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in AI avatars." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-        <article class="cell offer reveal" style="--d:.06s">
-          <div class="offer__top"><span class="cell__index">Per video</span><span class="offer__time">2–3 days</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 900</span><span class="offer__unit">up to 60 s</span></div>
-          <h3 class="cell__title">Avatar videos</h3>
-          <ul class="offer__list">
-            <li>Up to 3 minutes: AED 1,800</li>
-            <li>Pack of 10 short videos: AED 7,000</li>
-            <li>12 videos a month: AED 7,500, 3-month term</li>
-            <li>Script, captions, music, 2 revision rounds</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in avatar videos." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
-        </article>
-        <article class="cell offer reveal" style="--d:.12s">
-          <div class="offer__top"><span class="cell__index">Bundle</span><span class="offer__time">Bestseller</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 3,500</span><span class="offer__unit">one 60 s video</span></div>
-          <h3 class="cell__title">One spokesperson, 10 languages</h3>
-          <ul class="offer__list">
-            <li>Your avatar speaks Arabic, English, Russian, Hindi and six more</li>
-            <li>Lip-synced, translation checked by editors</li>
-            <li>Ideal for brokers, clinics, hotels and onboarding</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in the avatar + 10 languages bundle." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- 05 Dubbing -->
-  <section class="section section--line" id="dubbing">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div class="stack">
-          <p class="eyebrow reveal">05 · Video translation &amp; dubbing</p>
-          <h2 class="h-2 reveal">Your video in <em>150+ languages</em>, in the speaker's own voice.</h2>
-        </div>
-        <p class="lead reveal">Translation, voice cloning and lip-sync for ads, courses, product videos and films. Priced per finished minute, per language, with discounts as you add languages.</p>
-      </div>
-
-      <div class="cells cells--3 reveal">
-        <article class="cell offer">
-          <div class="offer__top"><span class="cell__index">Basic</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 60</span><span class="offer__unit">per minute · min AED 500</span></div>
-          <ul class="offer__list">
-            <li>Machine translation</li>
-            <li>Cloned voice of the speaker</li>
-            <li>Subtitles included</li>
-            <li>No lip-sync</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in video dubbing, Basic tier (AED 60 per minute)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Choose Basic</a></div>
+        <article class="cell offer reveal" style="--d:.2s">
+          <div class="offer__top"><span class="cell__index">05</span><span class="offer__time">150+ languages</span></div>
+          <div class="offer__price"><span class="offer__amount">from AED 60</span><span class="offer__unit">per minute, per language</span></div>
+          <h3 class="cell__title">Video translation &amp; dubbing</h3>
+          <p class="cell__text">Translation, voice cloning and lip-sync in the speaker's own voice. 5 languages −20%, 10 or more −30%.</p>
+          <div class="offer__foot"><a class="link link--acc" href="services/dubbing.html">Calculate <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'd like a quote for video dubbing." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-        <article class="cell offer">
-          <div class="offer__top"><span class="cell__index">Pro</span><span class="offer__time">Most popular</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 150</span><span class="offer__unit">per minute · min AED 1,000</span></div>
-          <ul class="offer__list">
-            <li>Lip-sync</li>
-            <li>Translation reviewed by an editor</li>
-            <li>Arabic checked by a native speaker</li>
-            <li>Subtitles included</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in video dubbing, Pro tier (AED 150 per minute)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Choose Pro</a></div>
-        </article>
-        <article class="cell offer">
-          <div class="offer__top"><span class="cell__index">Premium</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 300</span><span class="offer__unit">per minute · min AED 2,000</span></div>
-          <ul class="offer__list">
-            <li>Dialect adaptation, for example Gulf Arabic</li>
-            <li>On-screen text localised</li>
-            <li>Voice direction and 2 revision rounds</li>
-            <li>Lip-sync and subtitles</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in video dubbing, Premium tier (AED 300 per minute)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Choose Premium</a></div>
-        </article>
-      </div>
-      <p class="small muted mt-3 reveal">Subtitles only: AED 25 per minute. 5 languages −20%, 10 or more −30%.</p>
 
-      <div class="calc mt-6 reveal" data-calc="dubbing" data-studio-rate="450">
-        <div class="calc__controls">
-          <div class="calc__control">
-            <div class="calc__control-head"><label for="dub-minutes">Video length</label><output data-out="minutes">10 min</output></div>
-            <input id="dub-minutes" type="range" min="1" max="60" step="1" value="10" data-minutes>
-          </div>
-          <div class="calc__control">
-            <div class="calc__control-head"><label for="dub-languages">Languages</label><output data-out="languages">5 languages</output></div>
-            <input id="dub-languages" type="range" min="1" max="20" step="1" value="5" data-languages>
-          </div>
-          <div class="calc__control">
-            <label>Quality</label>
-            <div class="calc__segments" role="group" aria-label="Quality tier">
-              <button type="button" class="calc__segment" data-tier data-rate="60" data-min="500" aria-pressed="false"><strong>Basic</strong><span>AED 60 / min</span></button>
-              <button type="button" class="calc__segment" data-tier data-rate="150" data-min="1000" aria-pressed="true"><strong>Pro</strong><span>AED 150 / min</span></button>
-              <button type="button" class="calc__segment" data-tier data-rate="300" data-min="2000" aria-pressed="false"><strong>Premium</strong><span>AED 300 / min</span></button>
-            </div>
-          </div>
-        </div>
-        <div class="calc__result">
-          <div>
-            <p class="calc__total" data-out="total">AED 6,000</p>
-            <p class="calc__total-label">Your price, excl. VAT</p>
-          </div>
-          <div class="calc__lines">
-            <div><span>Rate</span><b data-out="rate">AED 150 / min</b></div>
-            <div><span>List price</span><b data-out="list">AED 7,500</b></div>
-            <div><span>Language-pack discount</span><b class="is-ok" data-out="discount">−20%</b></div>
-            <div><span>Studio dubbing with actors</span><b data-out="studio">AED 22,500</b></div>
-            <div><span>You pay</span><b class="is-ok" data-out="saving">73% less</b></div>
-          </div>
-          <p class="calc__note">Studio estimate uses AED 450 per minute per language, the middle of published Dubai rates for human dubbing. Final quote after we see the video.</p>
-          <div class="actions">
-            <a class="btn btn--wa" data-wa data-wa-calc data-wa-text="Hi Studiolab, I'd like a quote for video dubbing." href="https://wa.me/971553321026" target="_blank" rel="noopener">Get this quote on WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 Websites -->
-  <section class="section section--line" id="websites">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div class="stack">
-          <p class="eyebrow reveal">06 · Websites</p>
-          <h2 class="h-2 reveal">A site that's live this week, or one that <em>ranks</em> next month.</h2>
-        </div>
-        <p class="lead reveal">Two clear options. Both are fast, mobile-first, connected to WhatsApp and ready for your AI sales agent.</p>
-      </div>
-      <div class="cells cells--2">
-        <article class="cell offer reveal">
-          <div class="offer__top"><span class="cell__index">Option A</span><span class="offer__time">Live in 3–4 days</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 4,000–5,000</span><span class="offer__unit">depending on complexity</span></div>
-          <h3 class="cell__title">Launch website</h3>
+        <article class="cell offer reveal" style="--d:.25s">
+          <div class="offer__top"><span class="cell__index">06</span><span class="offer__time">Live in 3–4 days</span></div>
+          <div class="offer__price"><span class="offer__amount">AED 4,000–5,000</span></div>
+          <h3 class="cell__title">Websites</h3>
+          <p class="cell__text">A launch site in 3–4 days, or a website with an AI assistant and SEO for AED 7,000 in one month.</p>
           <div class="days" aria-label="Live in 3 to 4 days"><i></i><i></i><i></i><i class="is-off"></i><span class="days__label">3–4 days</span></div>
-          <ul class="offer__list">
-            <li>Up to 5 pages, design and copy</li>
-            <li>WhatsApp, forms and booking connected</li>
-            <li>Arabic and English on request</li>
-            <li>Hosting setup and handover</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in the launch website (AED 4,000–5,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
+          <div class="offer__foot"><a class="link link--acc" href="services/websites.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in a website." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-        <article class="cell offer reveal" style="--d:.06s">
-          <div class="offer__top"><span class="cell__index">Option B</span><span class="offer__time">1 month</span></div>
-          <div class="offer__price"><span class="offer__amount">AED 7,000</span><span class="offer__unit">fixed</span></div>
-          <h3 class="cell__title">Website with AI and SEO</h3>
-          <ul class="offer__list">
-            <li>Everything in the launch website</li>
-            <li>Keyword research and SEO structure for Dubai and the UAE</li>
-            <li>AI assistant on the site, trained on your business</li>
-            <li>Analytics, Search Console and a 30-day optimisation sprint</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in the website with AI and SEO (AED 7,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- 07 Business apps -->
-  <section class="section section--line" id="apps">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div class="stack">
-          <p class="eyebrow reveal">07 · Business apps</p>
-          <h2 class="h-2 reveal">An app for your customers or your team, <em>in weeks, not months.</em></h2>
-        </div>
-        <p class="lead reveal">Booking, loyalty, ordering, client portals and internal tools. We build on proven stacks with AI inside, connected to WhatsApp, payments and the systems you already use.</p>
-      </div>
-      <div class="cells cells--3">
-        <article class="cell offer reveal">
-          <div class="offer__top"><span class="cell__index">Option A</span><span class="offer__time">2–3 weeks</span></div>
-          <div class="offer__price"><span class="offer__amount">from AED 12,000</span><span class="offer__unit">web app, works on any phone</span></div>
-          <h3 class="cell__title">Web app or internal tool</h3>
-          <ul class="offer__list">
-            <li>Booking, orders, client portal, admin panel or CRM-lite</li>
-            <li>Installs on the phone as a PWA, no app store needed</li>
-            <li>Logins, roles and your data in your own cloud</li>
-            <li>WhatsApp and payment links connected</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in a web app or internal tool (from AED 12,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
+        <article class="cell offer reveal" style="--d:.3s">
+          <div class="offer__top"><span class="cell__index">07</span><span class="offer__time">Weeks, not months</span></div>
+          <div class="offer__price"><span class="offer__amount">from AED 12,000</span></div>
+          <h3 class="cell__title">Business apps</h3>
+          <p class="cell__text">Web apps and internal tools from AED 12,000 in 2–3 weeks, iOS and Android apps from AED 30,000 in 4–6 weeks, with an AI assistant inside.</p>
+          <div class="offer__foot"><a class="link link--acc" href="services/apps.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in a business app." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
         </article>
-        <article class="cell offer reveal" style="--d:.06s">
-          <div class="offer__top"><span class="cell__index">Option B</span><span class="offer__time">4–6 weeks</span></div>
-          <div class="offer__price"><span class="offer__amount">from AED 30,000</span><span class="offer__unit">iOS and Android</span></div>
-          <h3 class="cell__title">Mobile app</h3>
-          <ul class="offer__list">
-            <li>One codebase for iPhone and Android</li>
-            <li>Push notifications, payments, maps and chat</li>
-            <li>Published in the App Store and Google Play under your name</li>
-            <li>Admin panel and analytics included</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'm interested in a mobile app for iOS and Android (from AED 30,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
-        </article>
-        <article class="cell offer reveal" style="--d:.12s">
-          <div class="offer__top"><span class="cell__index">Add-on</span><span class="offer__time">Any option</span></div>
-          <div class="offer__price"><span class="offer__amount">from AED 5,000</span><span class="offer__unit">AI inside the app</span></div>
-          <h3 class="cell__title">AI assistant in your app</h3>
-          <ul class="offer__list">
-            <li>Answers, recommends and books inside the app</li>
-            <li>Trained on your catalogue and policies</li>
-            <li>Arabic, English and Russian, voice included</li>
-            <li>Same engine as our AI sales agent</li>
-          </ul>
-          <div class="offer__foot"><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'd like an AI assistant inside my app (from AED 5,000)." href="https://wa.me/971553321026" target="_blank" rel="noopener">Discuss on WhatsApp</a></div>
-        </article>
-      </div>
-      <p class="small muted mt-3 reveal">Support and updates from AED 1,500 per month. Prices exclude 5% VAT and app-store fees. Final quote after a free consultation.</p>
-    </div>
-  </section>
 
-  <!-- 08 Automation -->
-  <section class="section section--line" id="automation">
-    <div class="container split split--sticky">
-      <div>
-        <p class="eyebrow reveal">08 · Business automation with AI</p>
-        <h2 class="h-2 mt-3 reveal">Remove the manual work between your <em>systems</em>.</h2>
-        <p class="lead mt-3 reveal">Documents, invoices, CRM and ERP flows, reporting and internal copilots. We map the process, automate the repetitive 80% and keep a human on the decisions. Scoped in a 30-minute consultation, delivered as a pilot first.</p>
-        <div class="actions mt-4 reveal">
-          <a class="btn btn--wa" data-wa data-wa-text="Hi Studiolab, I'd like to automate a process in my business." href="https://wa.me/971553321026" target="_blank" rel="noopener">Describe your process on WhatsApp</a>
-          <a class="btn btn--ghost" href="contact.html">Book a consultation</a>
-        </div>
-      </div>
-      <div class="cells cells--2 reveal">
-        <div class="cell">
-          <span class="cell__index">Documents &amp; finance</span>
-          <ul class="offer__list">
-            <li>Invoice, receipt and contract extraction</li>
-            <li>Matching, reconciliation and approvals</li>
-            <li>E-invoicing readiness for the 2027 UAE mandate</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <span class="cell__index">Sales &amp; operations</span>
-          <ul class="offer__list">
-            <li>Lead routing between WhatsApp, CRM and calendar</li>
-            <li>Order, booking and delivery updates</li>
-            <li>Reports that write themselves every morning</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <span class="cell__index">Knowledge</span>
-          <ul class="offer__list">
-            <li>Internal assistant trained on your policies and files</li>
-            <li>Answers in Arabic and English</li>
-            <li>Access rules and audit log</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <span class="cell__index">Proof from our own platforms</span>
-          <ul class="offer__list">
-            <li><b class="num text-acc">1M+</b> documents processed by our engine</li>
-            <li><b class="num text-acc">500+</b> teams on our workflow system</li>
-            <li><b class="num text-acc">99.9%</b> average uptime</li>
-          </ul>
-        </div>
+        <article class="cell offer reveal" style="--d:.35s">
+          <div class="offer__top"><span class="cell__index">08</span><span class="offer__time">Pilot first</span></div>
+          <div class="offer__price"><span class="offer__amount offer__amount--text">Scoped in a consultation</span></div>
+          <h3 class="cell__title">Business automation with AI</h3>
+          <p class="cell__text">Documents, invoices, CRM and ERP flows, reports and internal copilots. We automate the repetitive 80% and keep people on the decisions.</p>
+          <div class="offer__foot"><a class="link link--acc" href="services/automation.html">Details <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--sm btn--wa" data-wa data-wa-text="Hi Studiolab, I'd like to automate a process in my business." href="https://wa.me/971553321026" target="_blank" rel="noopener">WhatsApp</a></div>
+        </article>
       </div>
     </div>
   </section>
@@ -655,14 +278,14 @@
         <p class="footer-title">Services</p>
         <ul class="footer-list">
           <li><a href="services.html#consultation">Free consultation</a></li>
-          <li><a href="services.html#sales-agent">AI sales agent</a></li>
-          <li><a href="services.html#employees">AI employees</a></li>
-          <li><a href="services.html#video">AI video</a></li>
-          <li><a href="services.html#avatars">AI avatars</a></li>
-          <li><a href="services.html#dubbing">Video dubbing, 150+ languages</a></li>
-          <li><a href="services.html#websites">Websites</a></li>
-          <li><a href="services.html#apps">Business apps</a></li>
-          <li><a href="services.html#automation">Business automation</a></li>
+          <li><a href="services/sales-agent.html">AI sales agent</a></li>
+          <li><a href="services/employees.html">AI employees</a></li>
+          <li><a href="services/video.html">AI video</a></li>
+          <li><a href="services/avatars.html">AI avatars</a></li>
+          <li><a href="services/dubbing.html">Video dubbing, 150+ languages</a></li>
+          <li><a href="services/websites.html">Websites</a></li>
+          <li><a href="services/apps.html">Business apps</a></li>
+          <li><a href="services/automation.html">Business automation</a></li>
         </ul>
       </div>
       <div>

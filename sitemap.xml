@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://studiolab.ae/</loc><priority>1.0</priority></url>
   <url><loc>https://studiolab.ae/services</loc><priority>0.9</priority></url>
+  <url><loc>https://studiolab.ae/services/sales-agent</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/employees</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/video</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/avatars</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/dubbing</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/websites</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/apps</loc><priority>0.8</priority></url>
+  <url><loc>https://studiolab.ae/services/automation</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/about</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/expertise</loc><priority>0.8</priority></url>
   <url><loc>https://studiolab.ae/portfolio</loc><priority>0.8</priority></url>
@@ -10,6 +18,14 @@
   <url><loc>https://studiolab.ae/contact</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/</loc><priority>0.9</priority></url>
   <url><loc>https://studiolab.ae/ar/services</loc><priority>0.9</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/sales-agent</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/employees</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/video</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/avatars</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/dubbing</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/websites</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/apps</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ar/services/automation</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/about</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/expertise</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ar/portfolio</loc><priority>0.7</priority></url>
@@ -18,6 +34,14 @@
   <url><loc>https://studiolab.ae/ar/contact</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/</loc><priority>0.9</priority></url>
   <url><loc>https://studiolab.ae/ru/services</loc><priority>0.9</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/sales-agent</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/employees</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/video</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/avatars</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/dubbing</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/websites</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/apps</loc><priority>0.7</priority></url>
+  <url><loc>https://studiolab.ae/ru/services/automation</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/about</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/expertise</loc><priority>0.7</priority></url>
   <url><loc>https://studiolab.ae/ru/portfolio</loc><priority>0.7</priority></url>

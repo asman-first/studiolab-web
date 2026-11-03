@@ -574,6 +574,31 @@ ol {
   align-items: center;
 }
 
+/* Breadcrumb line on service pages, under the fixed header */
+.crumbs {
+  padding-top: 6.5rem;
+}
+
+.crumbs .link {
+  font-size: 0.9rem;
+  color: var(--fg-2);
+}
+
+/* A whole cell as a link (other services strip) */
+.cell--link {
+  color: inherit;
+  text-decoration: none;
+  gap: 0.6rem;
+}
+
+.cell--link .cell__title {
+  font-size: 1.05rem;
+}
+
+.cell--link .cell__text {
+  color: var(--acc-2);
+}
+
 /* Floating WhatsApp */
 .wa-float {
   position: fixed;
